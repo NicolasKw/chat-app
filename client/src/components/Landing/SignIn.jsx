@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addSignedInUser } from "../redux/usersSlice";
-import { hashPassword } from "../services/hashFunction";
+import { addSignedInUser } from "../../redux/usersSlice";
+import { hashPassword } from "../../services/hashFunction";
 import axios from "axios";
-import { serverURL } from "../../server.config";
+import { serverURL } from "../../../server.config";
 
 export default function SignIn() {
     const dispatch = useDispatch();
@@ -41,19 +41,18 @@ export default function SignIn() {
             })
     };
 
-    return <div>
-        <h3>Sign In</h3>
-        <form action="" onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input type="text" name="username" value={user.username} onChange={handleChange} />
-
-            <label htmlFor="username">Password</label>
-            <input type="password" name="password" value={user.password} onChange={handleChange} />
-
-            <button type="submit">Sign In</button>
+    return <div className="flex flex-col items-center justify-between rounded-t dark:border-gray-600">
+        <form action="" className="w-full" onSubmit={handleSubmit}>
+            <div className="mb-4">
+                <label htmlFor="username" className="label">Username</label>
+                <input type="text" className="input" name="username" value={user.username} onChange={handleChange} />
+                <label htmlFor="username" className="label">Password</label>
+                <input type="password" className="input" name="password" value={user.password} onChange={handleChange} />
+            </div>
+            <button type="submit" className="btn-primary">Sign In</button>
         </form>
         {submitted && 
-            <h4>{!userValidated && 'Invalid username and/or password. Please try again'}</h4>
+            <h4 className="mt-2 text-center">{!userValidated && 'Invalid username and/or password. Please try again.'}</h4>
         }
     </div>
 }

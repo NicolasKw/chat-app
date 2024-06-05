@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from 'axios';
-import { addSignedInUser, addUser } from "../redux/usersSlice";
-import { hashPassword } from "../services/hashFunction";
+import { addSignedInUser, addUser } from "../../redux/usersSlice";
+import { hashPassword } from "../../services/hashFunction";
 import PropTypes from 'prop-types';
-import { serverURL } from "../../server.config";
+import { serverURL } from "../../../server.config";
 
 export default function SignUp({ fetchedUsers }) {
     const dispatch = useDispatch();
@@ -67,22 +67,21 @@ export default function SignUp({ fetchedUsers }) {
     };
 
     return <div>
-        <h3>Sign Up</h3>
         <form action="" onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input type="text" name="username" value={user.username} onChange={handleChange}/>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" value={user.password} onChange={handleChange}/>
-            <label htmlFor="repeatedPassword">Repeat password</label>
-            <input type="password" name="repeatedPassword" value={user.repeatedPassword} onChange={handleChange}/>
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" value={user.name} onChange={handleChange}/>
-            <label htmlFor="lastName">Last name</label>
-            <input type="text" name="lastName" value={user.lastName} onChange={handleChange}/>
-            <button type="submit">Create User</button>
+            <label htmlFor="username" className="label">Username</label>
+            <input type="text" className="input" name="username" value={user.username} onChange={handleChange}/>
+            <label htmlFor="password" className="label">Password</label>
+            <input type="password" className="input" name="password" value={user.password} onChange={handleChange}/>
+            <label htmlFor="repeatedPassword" className="label">Repeat password</label>
+            <input type="password" className="input" name="repeatedPassword" value={user.repeatedPassword} onChange={handleChange}/>
+            <label htmlFor="name" className="label">Name</label>
+            <input type="text" className="input" name="name" value={user.name} onChange={handleChange}/>
+            <label htmlFor="lastName" className="label">Last name</label>
+            <input type="text" className="input" name="lastName" value={user.lastName} onChange={handleChange}/>
+            <button type="submit" className="btn-primary">Create User</button>
         </form>
-        {(!repeatedPasswordValidation) && <span>Passwords do not match</span>}
-        {(!existingUserValidation) && <span>Username already exists. Sign in or create another username</span>}
+        {(!repeatedPasswordValidation) && <h4 className="mt-2">Passwords do not match</h4>}
+        {(!existingUserValidation) && <h4 className="mt-2 text-center">Username already exists. Sign in or create another username</h4>}
     </div>
 }
 
