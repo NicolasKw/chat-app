@@ -17,12 +17,13 @@ const App = () => {
     dispatch(fetchMessages());
   }, [dispatch]);
 
-  return <div className='min-h-screen py-10 bg-gray-50'>
+  return <div className='min-h-screen py-10 bg-gray-100'>
     {!Object.values(signedInUser).length
       ?
         <LandingContainer>
-          <h1 className="z-10 text-center mb-10 text-3xl font-extrabold leading-none tracking-tight text-white md:mb-10 md:text-5xl lg:text-6xl dark:text-white">Welcome to your <span className="text-blue-300 dark:text-blue-500">Chat App</span></h1>
-          <div className='z-0 bg-gray-700 absolute inset-0 h-40 w-screen'></div>
+          <h1 className="z-10 w-screen px-7 md:px-8 mb-4 text-left text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Chat App for <span className="text-blue-600 dark:text-blue-500">easy</span> and <span className="text-blue-600 dark:text-blue-500">direct</span> messaging.</h1>
+          <p className="z-10 w-screen px-7 md:px-8 mb-8 text-left text-lg font-normal text-gray-600 lg:text-xl dark:text-gray-400">Experience the ease of chatting with a streamlined app designed for daily connections.</p>
+          <div className='z-0 bg-gray-300 absolute inset-0 h-80 w-screen'></div>
           <UserAccess fetchedUsers={fetchedUsers} />
         </LandingContainer>
       :

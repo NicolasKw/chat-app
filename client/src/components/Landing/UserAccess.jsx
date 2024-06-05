@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import Register from "./Register";
 import UserAccessContainer from "./UserAccessContainer";
 import UserAccessTabs from "./UserAccessTabs";
 import Tab from "./Tab";
@@ -18,9 +18,9 @@ export default function UserAccess({ fetchedUsers }) {
                 isActive={screen === 'signIn'}
             />
             <Tab 
-                label="Sign up"
+                label="Register"
                 onClick={() => setScreen('signUp')}
-                isActive={screen === 'signUp'}
+                isActive={screen === 'register'}
             />
         </UserAccessTabs>
         <div>
@@ -28,7 +28,7 @@ export default function UserAccess({ fetchedUsers }) {
             ?
                 <SignIn />
             : 
-                <SignUp fetchedUsers={fetchedUsers} />
+                <Register fetchedUsers={fetchedUsers} />
             }
         </div>
     </UserAccessContainer>

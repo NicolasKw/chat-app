@@ -6,7 +6,7 @@ import { hashPassword } from "../../services/hashFunction";
 import PropTypes from 'prop-types';
 import { serverURL } from "../../../server.config";
 
-export default function SignUp({ fetchedUsers }) {
+export default function Register({ fetchedUsers }) {
     const dispatch = useDispatch();
 
     const [user, setUser] = useState({
@@ -78,13 +78,13 @@ export default function SignUp({ fetchedUsers }) {
             <input type="text" className="input" name="name" value={user.name} onChange={handleChange}/>
             <label htmlFor="lastName" className="label">Last name</label>
             <input type="text" className="input" name="lastName" value={user.lastName} onChange={handleChange}/>
-            <button type="submit" className="btn-primary">Create User</button>
+            <button type="submit" className="btn-primary">Register</button>
         </form>
         {(!repeatedPasswordValidation) && <h4 className="mt-2">Passwords do not match</h4>}
-        {(!existingUserValidation) && <h4 className="mt-2 text-center">Username already exists. Sign in or create another username</h4>}
+        {(!existingUserValidation) && <h4 className="mt-2 text-center">Username already exists. Sign in or register another username</h4>}
     </div>
 }
 
-SignUp.propTypes = {
+Register.propTypes = {
     fetchedUsers: PropTypes.array
 }
