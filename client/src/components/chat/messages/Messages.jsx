@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
-import { serverURL } from "../../server.config";
-import { addSelectedRecipient } from "../redux/usersSlice";
+import { serverURL } from "../../../../server.config";
 
 const socket = io(serverURL);
 
 export default function Messages() {
-    const dispatch = useDispatch();
 
     const signedInUser = useSelector((state) => state.users.signedInUser);
     const selectedRecipient = useSelector((state) => state.users.selectedRecipient);
@@ -29,8 +27,6 @@ export default function Messages() {
     }, [fetchedMessages, messages.length]);
 
     return <div>
-        <h3>{!selectedRecipient ? 'Select a contact to chat with' : `Chat with ${selectedRecipient}`}</h3>
-        {selectedRecipient && <button onClick={() => dispatch(addSelectedRecipient(null))}>Close chat</button>}
         <div style={{ border: '1px solid black' }}>
             <ul>
                 {messages.map((message, index) => (

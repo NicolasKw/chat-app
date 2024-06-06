@@ -5,7 +5,7 @@ import { serverURL } from '../../server.config';
 const initialState = {
     users: [],
     signedInUser: {},
-    selectedRecipient: '',
+    selectedRecipient: {},
     userValidated: false
 };
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addMessage } from '../redux/messagesSlice';
+import { addMessage } from '../../../redux/messagesSlice';
 import io from 'socket.io-client';
 import axios from 'axios';
-import { serverURL } from '../../server.config';
+import { serverURL } from '../../../../server.config';
 
 const socket = io(serverURL);
 
