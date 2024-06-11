@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export default function RightBarContainer({ children }) {
-    return <div className='w-screen overflow-y-auto'>
+    return <div className='w-full h-screen flex flex-col'>
         {children}
     </div>
 }

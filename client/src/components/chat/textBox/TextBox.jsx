@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMessage } from '../../../redux/messagesSlice';
 import io from 'socket.io-client';
-import axios from 'axios';
 import { serverURL } from '../../../../server.config';
 
 const socket = io(serverURL);
@@ -10,18 +9,19 @@ const socket = io(serverURL);
 export default function TextBox() {
     const dispatch = useDispatch();
 
-    const from = useSelector((state) => state.users.signedInUser.username);
-    const to = useSelector((state) => state.users.selectedRecipient);
+    const username = useSelector((state) => state.users.signedInUser.username);
+    const to = useSelector((state) => state.users.selectedRecipient.username);
+    const selectedRecipient = useSelector((state) => state.users.selectedRecipient);
 
     const [message, setMessage] = useState({
-        from: '',
+        username: '',
         to: '',
         text: ''
     });
 
     const handleChange = (event) => {
         setMessage({
-            from,
+            username,
             to,
             text: event.target.value
         });
@@ -32,7 +32,6 @@ export default function TextBox() {
         if(message.text) {
             socket.emit('chat message', message);
             try {
-                await axios.post(`${serverURL}/messages/createMessage`, message);
                 dispatch(addMessage(message));
                 setMessage((prevState) => ({
                     ...prevState,
@@ -44,10 +43,10 @@ export default function TextBox() {
         }
     };
 
-    return <div>
+    return <div className='w-full h-full'>
         <form action="" onSubmit={handleSubmit}>
-            <input type="text" value={message.text} onChange={handleChange}/>
-            <button type='submit'>Send</button>
+            <input type="text" value={message.text} onChange={handleChange} disabled={selectedRecipient.username ? false : true}/>
+            <button type='submit' disabled={selectedRecipient.username ? false : true}>Send</button>
         </form>
     </div>
 }

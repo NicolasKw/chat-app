@@ -15,6 +15,6 @@ const User = defineUser(sequelize);
 const Message = defineMessage(sequelize);
 
 User.hasMany(Message, { foreignKey: 'username' });
-Message.belongsTo(User, { foreignKey: 'from' });
+Message.belongsTo(User, { foreignKey: 'username' });
 
 module.exports = { sequelize, ...sequelize.models };

@@ -80,8 +80,8 @@ export default function Register({ fetchedUsers }) {
             <input type="text" className="input" name="lastName" value={user.lastName} onChange={handleChange}/>
             <button type="submit" className="btn-primary">Register</button>
         </form>
-        {(!repeatedPasswordValidation) && <h4 className="mt-2">Passwords do not match</h4>}
-        {(!existingUserValidation) && <h4 className="mt-2 text-center">Username already exists. Sign in or register another username</h4>}
+        {(!repeatedPasswordValidation) && <h4 className="mt-4">Passwords do not match</h4>}
+        {(!existingUserValidation) && <h4 className="mt-4 text-center">Username already exists. Sign in or register another username</h4>}
     </div>
 }
 

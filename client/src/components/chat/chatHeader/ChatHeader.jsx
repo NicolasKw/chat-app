@@ -20,13 +20,13 @@ export default function ChatHeader() {
         };
     }, []);
 
-    return <div>
+    return <div className='w-full'>
         {!selectedRecipient.username 
             ? 
                 <h3>Select a contact to chat with</h3>
             :
                 <div className='flex flex-row justify-between items-center w-full'>
-                    <div className='flex flex-row gap-2'>
+                    <div className='flex flex-row gap-2 w-full'>
                         <img className='w-8 h-8 md:w-10 md:h-10 rounded-full shadow-lg' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNpwG_EjEnNeGWwq-E-zItRXL76SwtbtIOA&s" alt="genericUser" />
                         <div>
                             <h3 className='w-fit'>{`${selectedRecipient.name} ${selectedRecipient.lastName}`}</h3>

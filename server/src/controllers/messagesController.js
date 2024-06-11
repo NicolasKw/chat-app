@@ -2,10 +2,10 @@ const { Message } = require('../../config/db');
 
 const createMessage = async (req, res) => {
     try {
-        const { from, to, text } = req.body;
+        const { username, to, text } = req.body;
 
         const message = await Message.create({
-            from,
+            username,
             to,
             text
         })

@@ -52,7 +52,7 @@ export default function SignIn() {
             <button type="submit" className="btn-primary">Sign In</button>
         </form>
         {submitted && 
-            <h4 className="mt-2 text-center">{!userValidated && 'Invalid username and/or password. Please try again.'}</h4>
+            <h4 className="mt-4 text-center">{!userValidated && 'Invalid username and/or password. Please try again.'}</h4>
         }
     </div>
 }

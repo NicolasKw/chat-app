@@ -17,7 +17,7 @@ const App = () => {
     dispatch(fetchMessages());
   }, [dispatch]);
 
-  return <div className='min-h-screen bg-gray-100'>
+  return <div className='h-screen overflow-hidden bg-gray-100'>
     {!Object.values(signedInUser).length
       ?
         <LandingContainer>

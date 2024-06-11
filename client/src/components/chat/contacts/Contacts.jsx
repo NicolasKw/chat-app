@@ -16,7 +16,7 @@ export default function Contacts({ fetchedUsers }) {
     return <div>
         {signedInUser &&
             <div>
-                <h3 className='text-center mb-2 p-1 text-gray-100 font-medium bg-gray-600 w-full'>Your contacts</h3>
+                <h3 className='text-center mb-2 text-gray-100 font-medium bg-gray-600 w-full'>Your contacts</h3>
                 <div className='space-y-2 font-medium'>
                     {fetchedUsers.map((user) => (
                         (user.username !== signedInUser.username && 

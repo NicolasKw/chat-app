@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import { serverURL } from "../../../../server.config";
+import ChatBubble from "./ChatBubble";
+import { isoStringToTime } from "../../../services/isoStringToTime";
 
 const socket = io(serverURL);
 
@@ -26,16 +28,22 @@ export default function Messages() {
         return(() => socket.off('chat message'));
     }, [fetchedMessages, messages.length]);
 
-    return <div>
-        <div style={{ border: '1px solid black' }}>
-            <ul>
-                {messages.map((message, index) => (
-                    ((message.from === signedInUser.username && message.to === selectedRecipient) || 
-                    (message.from === selectedRecipient && message.to === signedInUser.username) ) && (
-                        <li key={index}>{`From ${message.from}: ${message.text}`}</li>
-                    )
-                ))} 
-            </ul>
-        </div>
+    return <div className="flex flex-col items-start gap-2.5 w-full h-fit">
+            {messages.map((message, index) => (
+                ((message.username === signedInUser.username && message.to === selectedRecipient.username) || 
+                (message.username === selectedRecipient.username && message.to === signedInUser.username)) && (
+                    <ChatBubble 
+                        key={index} 
+                        >
+                            <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                                <span className="text-sm font-semibold text-gray-900">{message.username}</span>
+                                <span className="text-sm font-normal text-gray-500">{isoStringToTime(message.createdAt)}</span>
+                            </div>
+                            <div className="flex flex-col max-w-fit leading-1.5 p-2 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl">
+                                <p className="text-sm max-w-fit font-normal text-gray-90 break-words">{message.text}</p>
+                            </div>
+                    </ChatBubble>
+                )
+            ))} 
     </div>
 }
