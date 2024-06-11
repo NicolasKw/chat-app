@@ -56,8 +56,8 @@ This is a SPA built to practice web sockets, Tailwind CSS, and responsive design
 
 3. Open the application in your browser.
 
-4. Sign in with your username.
+4. Sign up (create) at least 2 users.
 
-5. Select a recipient from the list of users.
+5. Sign in with a user.
 
-6. Type your message and click 'Send'.
+6. Select the user you want to chat with and start chatting.
