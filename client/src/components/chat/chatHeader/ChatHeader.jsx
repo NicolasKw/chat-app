@@ -33,7 +33,7 @@ export default function ChatHeader() {
                             <h4 className='w-fit text-xs text-gray-500 '>{selectedRecipient.signedIn ? 'Online' : 'Offline'}</h4>
                         </div>
                     </div>
-                    <button className='btn-secondary w-fit sm:rounded-full md:rounded-lg px-2 py-1' onClick={() => dispatch(addSelectedRecipient({}))}>{isSmallScreen ? 'X' : 'Close chat'}</button>
+                    <button className='btn-secondary w-fit text-nowrap sm:rounded-full md:rounded-lg px-2 py-1' onClick={() => dispatch(addSelectedRecipient({}))}>{isSmallScreen ? 'X' : 'Close chat'}</button>
                 </div> 
         }
     </div>

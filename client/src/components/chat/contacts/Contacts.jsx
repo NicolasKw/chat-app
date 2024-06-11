@@ -2,12 +2,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addSelectedRecipient } from '../../../redux/usersSlice';
 import ContactButton from './ContactButton';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 export default function Contacts({ fetchedUsers }) {
     const dispatch = useDispatch();
 
     const signedInUser = useSelector((state) => state.users.signedInUser);
     const selectedRecipient = useSelector((state) => state.users.selectedRecipient);
+
+    useEffect(() => {
+        // Reset selectedRecipient when component unmounts
+        return () => {
+            dispatch(addSelectedRecipient({}));
+        };
+    }, [dispatch]);
 
     const handleClick = (user) => {
         dispatch(addSelectedRecipient(user));

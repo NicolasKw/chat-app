@@ -16,14 +16,16 @@ export default function TextBox() {
     const [message, setMessage] = useState({
         username: '',
         to: '',
-        text: ''
+        text: '',
+        createdAt: ''
     });
 
     const handleChange = (event) => {
         setMessage({
             username,
             to,
-            text: event.target.value
+            text: event.target.value,
+            createdAt: new Date().toISOString()
         });
     };
 
@@ -35,7 +37,8 @@ export default function TextBox() {
                 dispatch(addMessage(message));
                 setMessage((prevState) => ({
                     ...prevState,
-                    text: ''
+                    text: '',
+                    createdAt: ''
                 }));
             } catch (error) {
                 console.log(error.message);
@@ -44,9 +47,14 @@ export default function TextBox() {
     };
 
     return <div className='w-full h-full'>
-        <form action="" onSubmit={handleSubmit}>
-            <input type="text" value={message.text} onChange={handleChange} disabled={selectedRecipient.username ? false : true}/>
-            <button type='submit' disabled={selectedRecipient.username ? false : true}>Send</button>
+        <form action="" onSubmit={handleSubmit} className='flex flex-row justify-between gap-4 items-center'>
+            <input 
+                className='rounded-md w-full input m-0'
+                type="text" 
+                value={message.text} 
+                onChange={handleChange} 
+                disabled={selectedRecipient.username ? false : true}/>
+            <button className='btn-primary w-fit' type='submit' disabled={selectedRecipient.username ? false : true}>Send</button>
         </form>
     </div>
 }
